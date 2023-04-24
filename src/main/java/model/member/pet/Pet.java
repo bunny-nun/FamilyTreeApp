@@ -1,8 +1,8 @@
 package model.member.pet;
 
 import model.date.Date;
-import model.member.Member;
 import model.member.Gender;
+import model.member.Member;
 import model.member.person.Person;
 
 import java.util.ArrayList;

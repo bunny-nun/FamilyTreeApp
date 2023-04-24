@@ -1,11 +1,10 @@
 package ui.view;
 
 import javafx.scene.paint.Color;
-
 import model.member.Gender;
 import model.member.Member;
 
-public class TextInBox <M extends Member<M>> {
+public class TextInBox<M extends Member<M>> {
     private final String text;
     private final int height;
     private final int width;

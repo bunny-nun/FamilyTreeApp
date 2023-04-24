@@ -139,8 +139,8 @@ public abstract class Member<M extends Member<M>> implements Savable {
             this.getMother().getChildren().remove(this);
         }
         this.mother = mother;
-        if (!mother.children.contains(this)) {
-            mother.children.add((M) this);
+        if (!mother.getChildren().contains(this)) {
+            mother.getChildren().add((M) this);
         }
     }
 
@@ -166,8 +166,8 @@ public abstract class Member<M extends Member<M>> implements Savable {
             this.getFather().getChildren().remove(this);
         }
         this.father = father;
-        if (!father.children.contains(this)) {
-            father.children.add((M) this);
+        if (!father.getChildren().contains(this)) {
+            father.getChildren().add((M) this);
         }
     }
 
@@ -226,6 +226,7 @@ public abstract class Member<M extends Member<M>> implements Savable {
             couple.couple = null;
         }
     }
+
     /**
      * Compare this member to another member by their names and dates of birth
      *

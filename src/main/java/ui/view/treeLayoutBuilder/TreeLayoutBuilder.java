@@ -1,7 +1,6 @@
 package ui.view.treeLayoutBuilder;
 
 import javafx.scene.Group;
-
 import model.member.Member;
 import ui.view.TextInBox;
 import ui.view.TreeLayoutView;

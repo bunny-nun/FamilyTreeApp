@@ -1,12 +1,11 @@
 package ui;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.*;
-
+import javafx.scene.layout.BorderPane;
 import model.member.Member;
 import ui.view.TextInBox;
+import ui.view.commands.Command;
 import ui.view.treeLayoutBuilder.TreeLayoutBuilder;
-import ui.view.commands.*;
 
 public class ViewController<M extends Member<M>> {
     @FXML

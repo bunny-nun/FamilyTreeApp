@@ -1,6 +1,5 @@
 package ui.view.treeLayoutBuilder;
 
-import javafx.scene.Group;
 import model.member.Member;
 import org.abego.treelayout.Configuration;
 import org.abego.treelayout.TreeLayout;

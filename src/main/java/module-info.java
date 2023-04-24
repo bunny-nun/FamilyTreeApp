@@ -3,7 +3,7 @@ module ui.familytreeapp {
     requires javafx.fxml;
     requires java.desktop;
     requires org.abego.treelayout.core;
-                            
+
     opens ui to javafx.fxml;
     exports ui;
     exports model.member.person;

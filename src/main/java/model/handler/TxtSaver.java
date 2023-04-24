@@ -2,7 +2,9 @@ package model.handler;
 
 import model.service.Savable;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TxtSaver extends FileSaver {
 

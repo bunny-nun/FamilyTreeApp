@@ -112,7 +112,7 @@ public class TxtLoader extends FileLoader {
      */
     @Override
     public Savable readFile(File file) {
-            return readFile(file.getAbsolutePath().replace(".txt", ""));
+        return readFile(file.getAbsolutePath().replace(".txt", ""));
     }
 
     /**
@@ -213,7 +213,7 @@ public class TxtLoader extends FileLoader {
      * - date of birth,
      * - date of death (if assigned)
      *
-     * @param data HashMap object containing parsed dictionary with names of fields as keys and their values
+     * @param data     HashMap object containing parsed dictionary with names of fields as keys and their values
      * @param typeInfo string value displaying the type of this pet
      * @return the pet with assigned information
      */

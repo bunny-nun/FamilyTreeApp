@@ -14,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import model.member.person.Person;
 import model.member.pet.Pet;
 import model.service.PetService;
 import model.tree.Tree;

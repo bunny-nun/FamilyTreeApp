@@ -1,12 +1,12 @@
 package model.tree;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import model.member.Member;
+import model.member.person.Person;
 import model.member.pet.Pet;
 import model.service.Savable;
-import model.member.person.Person;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
     private String name;
@@ -36,7 +36,7 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
      * Class Tree (empty)
      */
     public Tree() {
-       this("New_Tree");
+        this("New_Tree");
     }
 
     /**

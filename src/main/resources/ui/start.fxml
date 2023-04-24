@@ -1,87 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.StartController">
-   <children>
-      <HBox alignment="CENTER" spacing="10.0">
-         <children>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
-               <image>
-                  <Image url="D:\УЧЕБА\FamilyTreeApp\src\main\resources\ui\tree.png" />
-               </image>
-            </ImageView>
-            <AnchorPane>
-               <children>
-                  <VBox prefHeight="240.0" spacing="20.0">
-                     <children>
-                        <Group>
-                           <children>
-                              <Group layoutY="27.0">
-                                 <children>
-                                    <Button fx:id="openButton" layoutX="190.0" mnemonicParsing="false" onAction="#openClick" onMouseClicked="#openClick" prefHeight="25.0" prefWidth="75.0" text="Open" />
-                                    <TextField fx:id="pathWindow" prefHeight="25.0" prefWidth="180.0">
-                                       <font>
-                                          <Font name="System Italic" size="12.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </Group>
-                              <Label text="Open tree file:" />
-                           </children>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                        </Group>
-                        <Button fx:id="startButton" mnemonicParsing="false" onAction="#startClick" onMouseClicked="#startClick" prefHeight="25.0" prefWidth="75.0" text="Start">
-                           <VBox.margin>
-                              <Insets left="190.0" />
-                           </VBox.margin>
-                        </Button>
-                        <Group>
-                           <children>
-                              <Group layoutY="17.0">
-                                 <children>
-                                    <Button fx:id="createButton" layoutX="190.0" mnemonicParsing="false" onAction="#create" onMouseClicked="#create" prefHeight="25.0" prefWidth="75.0" text="Create" />
-                                    <RadioButton fx:id="PersonNewRadioButton" layoutX="92.0" layoutY="4.0" mnemonicParsing="false" selected="true" text="Family Tree">
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="nodeTypeToggleGroup" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="petNewRadioButton" layoutY="4.0" mnemonicParsing="false" text="Pedigree" toggleGroup="$nodeTypeToggleGroup" />
-                                 </children>
-                              </Group>
-                              <Label text="Or create new tree:" />
-                           </children>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                        </Group>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </HBox>
-      <Label alignment="TOP_RIGHT" contentDisplay="CENTER" layoutX="361.0" prefHeight="43.0" prefWidth="123.0" text="Family Tree" textFill="#8eb936">
-         <font>
-            <Font name="Chiller" size="36.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.StartController">
+    <children>
+        <HBox alignment="CENTER" spacing="10.0">
+            <children>
+                <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
+                    <image>
+                        <Image url="D:\УЧЕБА\FamilyTreeApp\src\main\resources\ui\tree.png"/>
+                    </image>
+                </ImageView>
+                <AnchorPane>
+                    <children>
+                        <VBox prefHeight="240.0" spacing="20.0">
+                            <children>
+                                <Group>
+                                    <children>
+                                        <Group layoutY="27.0">
+                                            <children>
+                                                <Button fx:id="openButton" layoutX="190.0" mnemonicParsing="false"
+                                                        onAction="#openClick" onMouseClicked="#openClick"
+                                                        prefHeight="25.0" prefWidth="75.0" text="Open"/>
+                                                <TextField fx:id="pathWindow" prefHeight="25.0" prefWidth="180.0">
+                                                    <font>
+                                                        <Font name="System Italic" size="12.0"/>
+                                                    </font>
+                                                </TextField>
+                                            </children>
+                                        </Group>
+                                        <Label text="Open tree file:"/>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="30.0"/>
+                                    </VBox.margin>
+                                </Group>
+                                <Button fx:id="startButton" mnemonicParsing="false" onAction="#startClick"
+                                        onMouseClicked="#startClick" prefHeight="25.0" prefWidth="75.0" text="Start">
+                                    <VBox.margin>
+                                        <Insets left="190.0"/>
+                                    </VBox.margin>
+                                </Button>
+                                <Group>
+                                    <children>
+                                        <Group layoutY="17.0">
+                                            <children>
+                                                <Button fx:id="createButton" layoutX="190.0" mnemonicParsing="false"
+                                                        onAction="#create" onMouseClicked="#create" prefHeight="25.0"
+                                                        prefWidth="75.0" text="Create"/>
+                                                <RadioButton fx:id="PersonNewRadioButton" layoutX="92.0" layoutY="4.0"
+                                                             mnemonicParsing="false" selected="true" text="Family Tree">
+                                                    <toggleGroup>
+                                                        <ToggleGroup fx:id="nodeTypeToggleGroup"/>
+                                                    </toggleGroup>
+                                                </RadioButton>
+                                                <RadioButton fx:id="petNewRadioButton" layoutY="4.0"
+                                                             mnemonicParsing="false" text="Pedigree"
+                                                             toggleGroup="$nodeTypeToggleGroup"/>
+                                            </children>
+                                        </Group>
+                                        <Label text="Or create new tree:"/>
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="30.0"/>
+                                    </VBox.margin>
+                                </Group>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </padding>
+        </HBox>
+        <Label alignment="TOP_RIGHT" contentDisplay="CENTER" layoutX="361.0" prefHeight="43.0" prefWidth="123.0"
+               text="Family Tree" textFill="#8eb936">
+            <font>
+                <Font name="Chiller" size="36.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

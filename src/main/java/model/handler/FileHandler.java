@@ -1,10 +1,5 @@
 package model.handler;
-
 import model.service.Savable;
-
-import java.io.File;
-import java.io.IOException;
-
 
 public abstract class FileHandler {
     Savable object;

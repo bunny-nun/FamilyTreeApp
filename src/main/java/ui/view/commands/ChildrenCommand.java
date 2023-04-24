@@ -5,7 +5,7 @@ import ui.view.TextInBox;
 import ui.view.treeLayoutBuilder.ChildrenTreeLayoutBuilder;
 import ui.view.treeLayoutBuilder.TreeLayoutBuilder;
 
-public class ChildrenCommand <M extends Member<M>> extends Command<M> {
+public class ChildrenCommand<M extends Member<M>> extends Command<M> {
     public ChildrenCommand() {
         super("Show Successors");
     }

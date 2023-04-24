@@ -1,7 +1,6 @@
 package ui.view.treeLayoutBuilder;
 
 import model.member.Member;
-import org.abego.treelayout.Configuration;
 import org.abego.treelayout.TreeLayout;
 import org.abego.treelayout.util.DefaultConfiguration;
 import org.abego.treelayout.util.DefaultTreeForTreeLayout;
