@@ -151,7 +151,9 @@ public abstract class Member<M extends Member<M>> implements Savable {
      */
     public void unSetMother(M mother) {
         if (this.getMother() == mother) {
-            mother.getChildren().remove(this);
+            while (mother.getChildren().contains(this)) {
+                mother.getChildren().remove(this);
+            }
             this.mother = null;
         }
     }
@@ -178,7 +180,9 @@ public abstract class Member<M extends Member<M>> implements Savable {
      */
     public void unSetFather(M father) {
         if (this.getFather() == father) {
-            father.getChildren().remove(this);
+            while (father.getChildren().contains(this)) {
+                father.getChildren().remove(this);
+            }
             this.father = null;
         }
     }
