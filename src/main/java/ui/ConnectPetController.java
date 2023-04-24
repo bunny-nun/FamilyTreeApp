@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.member.Gender;
 import model.member.pet.Pet;
+import model.service.PersonService;
+import model.service.PetService;
 
 public class ConnectPetController {
 
@@ -45,11 +47,16 @@ public class ConnectPetController {
     private Pet primaryPet;
     private Pet connectPet;
     private ObservableList<Pet> list;
+    private PetService petService;
 
     @FXML
     private void initialize() {
         this.list = FXCollections.observableArrayList();
         showTable();
+    }
+
+    public void setPetService(PetService petService) {
+        this.petService = petService;
     }
 
     /**
@@ -105,46 +112,39 @@ public class ConnectPetController {
      */
     @FXML
     private void connect() {
+        String message;
         if (motherRadioButton.isSelected()) {
+            message = this.petService.cancelConnection(this.primaryPet, this.connectPet);
             this.primaryPet.setMother(this.connectPet);
-            notification(this.primaryPet, this.connectPet, "sets", "mother");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPet, this.connectPet, "mother");
         } else if (fatherRadioButton.isSelected()) {
+            message = this.petService.cancelConnection(this.primaryPet, this.connectPet);
             this.primaryPet.setFather(this.connectPet);
-            notification(this.primaryPet, this.connectPet, "sets", "father");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPet, this.connectPet, "father");
         } else if (childRadioButton.isSelected()) {
+            message = this.petService.cancelConnection(this.primaryPet, this.connectPet);
             this.primaryPet.setChild(this.connectPet);
-            notification(this.primaryPet, this.connectPet, "sets", "child");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPet, this.connectPet, "child");
         } else if (coupleRadioButton.isSelected()) {
+            message = this.petService.cancelConnection(this.primaryPet, this.connectPet);
             this.primaryPet.setCouple(this.connectPet);
-            notification(this.primaryPet, this.connectPet, "sets", "couple");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPet, this.connectPet, "couple");
         } else if (noneRadioButton.isSelected()) {
-            if (this.primaryPet.getMother() != null) {
-                if (this.primaryPet.getMother().equals(this.connectPet)) {
-                    this.primaryPet.unSetMother(this.connectPet);
-                    notification(this.primaryPet, this.connectPet, "unsets", "mother");
-                }
-            }
-            if (this.primaryPet.getFather() != null) {
-                if (this.primaryPet.getFather().equals(this.connectPet)) {
-                    this.primaryPet.unSetFather(this.connectPet);
-                    notification(this.primaryPet, this.connectPet, "unsets", "father");
-                }
-            }
-            if (!this.primaryPet.getChildren().isEmpty()) {
-                if (this.primaryPet.getChildren().contains(this.connectPet)) {
-                    if (this.primaryPet.getGender().equals(Gender.Female)) {
-                        this.connectPet.unSetMother(this.primaryPet);
-                    } else {
-                        this.connectPet.unSetFather(this.primaryPet);
-                    }
-                    notification(this.primaryPet, this.connectPet, "unsets", "child");
-                }
-            }
-            if (this.primaryPet.getCouple() != null) {
-                if (this.primaryPet.getCouple().equals(this.connectPet)) {
-                    this.primaryPet.divorce(this.connectPet);
-                    notification(this.primaryPet, this.connectPet, "unsets", "couple");
-                }
+            message = this.petService.cancelConnection(this.primaryPet, this.connectPet);
+            if (!message.isEmpty()) {
+                System.out.println(message);
             }
         } else {
             this.requiredFields.setText("*choose connection");
@@ -202,10 +202,9 @@ public class ConnectPetController {
      *
      * @param primaryPet this primary pet
      * @param connectPet the pet chosen to be connected with
-     * @param action     sets / unsets
      * @param role       type of connection between pets
      */
-    private void notification(Pet primaryPet, Pet connectPet, String action, String role) {
-        System.out.printf("%s %s as %s to %s\n", connectPet.getName(), action, role, primaryPet.getName());
+    private void notification(Pet primaryPet, Pet connectPet, String role) {
+        System.out.printf("%s was set as %s to %s\n", connectPet.getName(), role, primaryPet.getName());
     }
 }

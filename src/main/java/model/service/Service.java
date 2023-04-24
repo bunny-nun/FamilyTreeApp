@@ -79,25 +79,25 @@ public abstract class Service<M extends Member<M>> {
      * Sorts a tree by persons' first names
      */
     public void sortByPersonFirstName(Tree<Person> object) {
-        object.getElements().sort(new PersonComparatorByFirstName());
+        object.getMembers().sort(new PersonComparatorByFirstName());
     }
 
     /**
      * Sorts a tree by persons' last names
      */
     public void sortPersonByLastName(Tree<Person> object) {
-        object.getElements().sort(new PersonComparatorByLastName());
+        object.getMembers().sort(new PersonComparatorByLastName());
     }
 
     public void sortPetByName(Tree<Pet> object) {
-        object.getElements().sort(new ComparatorByName<>());
+        object.getMembers().sort(new ComparatorByName<>());
     }
 
     /**
      * Sorts a tree by members' dates of birth
      */
     public void sortByBirth(Tree<M> object) {
-        object.getElements().sort(new ComparatorByBirth<>());
+        object.getMembers().sort(new ComparatorByBirth<>());
     }
 
     /**
@@ -123,5 +123,51 @@ public abstract class Service<M extends Member<M>> {
      */
     public void open(File file) throws IOException, ClassNotFoundException {
         this.tree = (Tree<M>) this.readOutput(file);
+    }
+
+    /**
+     * Cancels previous members' connections
+     *
+     * @param primaryMember first member
+     * @param connectMember second member
+     * @return string value of result
+     */
+    public String cancelConnection(M primaryMember, M connectMember) {
+        String role = "";
+        if (primaryMember.getMother() != null) {
+            if (primaryMember.getMother().equals(connectMember)) {
+                primaryMember.unSetMother(connectMember);
+                role = "mother";
+            }
+        }
+        if (primaryMember.getFather() != null) {
+            if (primaryMember.getFather().equals(connectMember)) {
+                primaryMember.unSetFather(connectMember);
+                role = "father";
+            }
+        }
+        if (connectMember.getMother() != null) {
+            if (connectMember.getMother().equals(primaryMember)) {
+                connectMember.unSetMother(primaryMember);
+                role = "child";
+            }
+        }
+        if (connectMember.getFather() != null) {
+            if (connectMember.getFather().equals(primaryMember)) {
+                connectMember.unSetFather(primaryMember);
+                role = "child";
+            }
+        }
+        if (primaryMember.getCouple() != null) {
+            if (primaryMember.getCouple().equals(connectMember)) {
+                primaryMember.divorce(connectMember);
+                role = "couple";
+            }
+        }
+        if (role.isEmpty()) {
+            return role;
+        } else {
+            return String.format("%s was unset as %s to %s", connectMember.getName(), role, primaryMember.getName());
+        }
     }
 }

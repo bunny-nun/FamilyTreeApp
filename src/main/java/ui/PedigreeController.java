@@ -215,6 +215,7 @@ public class PedigreeController {
                 e.printStackTrace();
             }
             ConnectPetController controller = loader.getController();
+            controller.setPetService(this.petService);
             controller.setPrimaryPet(pet);
             controller.setList(this.list);
             Parent root = loader.getRoot();

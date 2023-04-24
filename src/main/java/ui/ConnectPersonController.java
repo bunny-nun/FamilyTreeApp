@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.member.Gender;
 import model.member.person.Person;
+import model.service.PersonService;
 
 public class ConnectPersonController {
 
@@ -51,12 +52,17 @@ public class ConnectPersonController {
     private Person primaryPerson;
     private Person connectPerson;
     private ObservableList<Person> list;
+    private PersonService personService;
 
 
     @FXML
     private void initialize() {
         this.list = FXCollections.observableArrayList();
         showTable();
+    }
+
+    public void setPersonService(PersonService personService) {
+        this.personService = personService;
     }
 
     /**
@@ -112,46 +118,39 @@ public class ConnectPersonController {
      */
     @FXML
     private void connect() {
+        String message;
         if (motherRadioButton.isSelected()) {
+            message = this.personService.cancelConnection(this.primaryPerson, this.connectPerson);
             this.primaryPerson.setMother(this.connectPerson);
-            notification(this.primaryPerson, this.connectPerson, "is set", "mother");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPerson, this.connectPerson, "mother");
         } else if (fatherRadioButton.isSelected()) {
+            message = this.personService.cancelConnection(this.primaryPerson, this.connectPerson);
             this.primaryPerson.setFather(this.connectPerson);
-            notification(this.primaryPerson, this.connectPerson, "is set", "father");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPerson, this.connectPerson, "father");
         } else if (childRadioButton.isSelected()) {
+            message = this.personService.cancelConnection(this.primaryPerson, this.connectPerson);
             this.primaryPerson.setChild(this.connectPerson);
-            notification(this.primaryPerson, this.connectPerson, "is set", "child");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPerson, this.connectPerson, "child");
         } else if (spouseRadioButton.isSelected()) {
+            message = this.personService.cancelConnection(this.primaryPerson, this.connectPerson);
             this.primaryPerson.setCouple(this.connectPerson);
-            notification(this.primaryPerson, this.connectPerson, "is set", "couple");
+            if (!message.isEmpty()) {
+                System.out.println(message);
+            }
+            notification(this.primaryPerson, this.connectPerson, "couple");
         } else if (noneRadioButton.isSelected()) {
-            if (this.primaryPerson.getMother() != null) {
-                if (this.primaryPerson.getMother().equals(this.connectPerson)) {
-                    this.primaryPerson.unSetMother(this.connectPerson);
-                    notification(this.primaryPerson, this.connectPerson, "is unset", "mother");
-                }
-            }
-            if (this.primaryPerson.getFather() != null) {
-                if (this.primaryPerson.getFather().equals(this.connectPerson)) {
-                    this.primaryPerson.unSetFather(this.connectPerson);
-                    notification(this.primaryPerson, this.connectPerson, "is unset", "father");
-                }
-            }
-            if (!this.primaryPerson.getChildren().isEmpty()) {
-                if (this.primaryPerson.getChildren().contains(this.connectPerson)) {
-                    if (this.primaryPerson.getGender().equals(Gender.Female)) {
-                        this.connectPerson.unSetMother(this.primaryPerson);
-                    } else {
-                        this.connectPerson.unSetFather(this.primaryPerson);
-                    }
-                    notification(this.primaryPerson, this.connectPerson, "is unset", "child");
-                }
-            }
-            if (this.primaryPerson.getCouple() != null) {
-                if (this.primaryPerson.getCouple().equals(this.connectPerson)) {
-                    this.primaryPerson.divorce(this.connectPerson);
-                    notification(this.primaryPerson, this.connectPerson, "is unset", "couple");
-                }
+            message = this.personService.cancelConnection(this.primaryPerson, this.connectPerson);
+            if (!message.isEmpty()) {
+                System.out.println(message);
             }
         } else {
             this.requiredFields.setText("*choose connection");
@@ -211,12 +210,9 @@ public class ConnectPersonController {
      *
      * @param primaryPerson this primary person
      * @param connectPerson the person chosen to be connected with
-     * @param action        sets / unsets
      * @param role          type of connection between persons
      */
-    private void notification(Person primaryPerson, Person connectPerson, String action, String role) {
-        System.out.printf("%s %s %s as %s to %s %s\n", connectPerson.getFirstName(),
-                connectPerson.getLastName(), action, role, primaryPerson.getFirstName(),
-                primaryPerson.getLastName());
+    private void notification(Person primaryPerson, Person connectPerson, String role) {
+        System.out.printf("%s was set as %s to %s\n", connectPerson.getName(), role, primaryPerson.getName());
     }
 }

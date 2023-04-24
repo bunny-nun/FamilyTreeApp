@@ -53,7 +53,7 @@ public class PersonService extends Service<Person> {
     @Override
     public boolean delete(Person person) {
         if (this.tree.contains(person)) {
-            this.tree.removeElement(person);
+            this.tree.removeMember(person);
             return true;
         }
         return false;

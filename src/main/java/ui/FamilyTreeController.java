@@ -220,6 +220,7 @@ public class FamilyTreeController {
                 e.printStackTrace();
             }
             ConnectPersonController controller = loader.getController();
+            controller.setPersonService(this.personService);
             controller.setPrimaryPerson(person);
             controller.setList(this.list);
             Parent root = loader.getRoot();

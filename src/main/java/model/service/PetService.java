@@ -55,7 +55,7 @@ public class PetService extends Service<Pet> {
     @Override
     public boolean delete(Pet pet) {
         if (this.tree.contains(pet)) {
-            this.tree.removeElement(pet);
+            this.tree.removeMember(pet);
             return true;
         }
         return false;

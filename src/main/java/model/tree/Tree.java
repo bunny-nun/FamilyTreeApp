@@ -61,12 +61,12 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
     /**
      * Adds an object of interface Member to this tree
      *
-     * @param node an object of interface Member
+     * @param member an object of interface Member
      */
-    public void addMember(M node) {
-        if (node != null) {
-            if (!this.familyTree.contains(node)) {
-                this.familyTree.add(node);
+    public void addMember(M member) {
+        if (member != null) {
+            if (!this.familyTree.contains(member)) {
+                this.familyTree.add(member);
             }
         }
     }
@@ -78,16 +78,16 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
      */
     public void addMembers(Tree<M> family) {
         if (!family.isEmpty()) {
-            for (M node : family.familyTree) {
-                if (!this.familyTree.contains(node)) {
-                    this.familyTree.add(node);
+            for (M member : family.familyTree) {
+                if (!this.familyTree.contains(member)) {
+                    this.familyTree.add(member);
                 }
             }
         }
     }
 
     /**
-     * Looking for am element in this tree by name and returns a tree with all matching results
+     * Looking for a member in this tree by name and returns a tree with all matching results
      *
      * @param name a string value with a name of a person to find (first name and last name separated by space in any order)
      * @return new object of a class Tree containing objects of a class Member with all matching results
@@ -98,17 +98,17 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
                 .replaceAll("\\.", " ");
         while (name.contains("  ")) name = name.replace("  ", " ");
         name = name.replaceAll(" ", "_");
-        for (M element : this.familyTree) {
-            if (element.getName().toLowerCase().replaceAll(" ", "_").equals(name)) {
-                search.addMember(element);
+        for (M member : this.familyTree) {
+            if (member.getName().toLowerCase().replaceAll(" ", "_").equals(name)) {
+                search.addMember(member);
             } else {
                 String[] reverse = name.split("_");
                 String temp = reverse[0];
                 reverse[0] = reverse[1];
                 reverse[1] = temp;
                 name = String.join("_", reverse);
-                if (element.getName().toLowerCase().replaceAll(" ", "_").equals(name)) {
-                    search.addMember(element);
+                if (member.getName().toLowerCase().replaceAll(" ", "_").equals(name)) {
+                    search.addMember(member);
                 }
             }
         }
@@ -120,26 +120,31 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
      *
      * @return an ArrayList that contains all objects in this tree
      */
-    public ArrayList<M> getElements() {
+    public ArrayList<M> getMembers() {
         return this.familyTree;
     }
 
     /**
-     * Returns the element at the specified position in this tree
+     * Returns the member at the specified position in this tree
      *
-     * @param num index of the element to return
+     * @param num index of the member to return
      * @return the object at the specified position in this tree
      */
-    public M getElement(int num) {
+    public M getMember(int num) {
         return this.familyTree.get(num);
     }
 
-    public void removeElement(M element) {
-        this.familyTree.remove(element);
+    /**
+     * Removes the first occurrence of the specified member from this tree
+     *
+     * @param member an object of interface Member
+     */
+    public void removeMember(M member) {
+        this.familyTree.remove(member);
     }
 
     /**
-     * Returns the number of elements in this tree
+     * Returns the number of members in this tree
      *
      * @return the number of objects in this tree
      */
@@ -148,36 +153,36 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
     }
 
     /**
-     * Returns a string containing the name of this tree and string value of elements of this tree
+     * Returns a string containing the name of this tree and string value of members of this tree
      *
      * @return string value containing the name of this tree and string value of all objects in this tree
      */
     @Override
     public String toString() {
         StringBuilder familyTree = new StringBuilder(String.format("\n%s_Tree:\n", this.name));
-        for (M node : this.familyTree) {
-            familyTree.append(String.format("%s\n", node.toString()));
+        for (M member : this.familyTree) {
+            familyTree.append(String.format("%s\n", member.toString()));
         }
         return familyTree.toString();
     }
 
     /**
-     * Returns a string containing the full information of all elements of this tree
+     * Returns a string containing the full information of all members of this tree
      *
      * @return string value containing the full information of all objects in this tree
      */
     @Override
     public String fullData() {
         StringBuilder data = new StringBuilder();
-        for (M node : this.familyTree) {
-            data.append(node.fullData())
+        for (M member : this.familyTree) {
+            data.append(member.fullData())
                     .append("--------------\n");
         }
         return data.toString();
     }
 
     /**
-     * Returns true if this tree contains no elements
+     * Returns true if this tree contains no members
      *
      * @return true if this tree contains no objects
      */
@@ -186,25 +191,25 @@ public class Tree<M extends Member<M>> implements Savable, Iterable<M> {
     }
 
     /**
-     * Returns true if this tree contains an element with the same name and date of birth, otherwise returns false
+     * Returns true if this tree contains a member with the same name and date of birth, otherwise returns false
      *
-     * @param node an object of interface Member whose name and date of birth will be checked
+     * @param element an object of interface Member whose name and date of birth will be checked
      * @return true if this tree contains an object whose name and date of birth string values equal to name and date of birth string values of given object
      */
-    public boolean contains(M node) {
+    public boolean contains(M element) {
         boolean result = false;
-        for (M element : this) {
-            if (node instanceof Person) {
-                if (((Person) element).getFirstName().equals(((Person) node).getFirstName()) &&
-                        ((Person) element).getLastName().equals(((Person) node).getLastName()) &&
-                        ((Person) element).getBirthDate().equals(((Person) node).getBirthDate())) {
+        for (M member : this) {
+            if (element instanceof Person) {
+                if (((Person) member).getFirstName().equals(((Person) element).getFirstName()) &&
+                        ((Person) member).getLastName().equals(((Person) element).getLastName()) &&
+                        member.getBirthDate().equals(element.getBirthDate())) {
                     result = true;
                     break;
                 }
             }
-            if (node instanceof Pet) {
-                if (((Pet) element).getName().equals(((Pet) node).getName()) &&
-                        ((Pet) element).getBirthDate().equals(((Pet) node).getBirthDate())) {
+            if (element instanceof Pet) {
+                if (member.getName().equals(element.getName()) &&
+                        ((Pet) member).getBirthDate().equals(((Pet) element).getBirthDate())) {
                     result = true;
                     break;
                 }

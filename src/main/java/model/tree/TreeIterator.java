@@ -32,6 +32,6 @@ public class TreeIterator<M extends Member<M>> implements Iterator<M> {
      * @return the next element in the iteration
      */
     public M next() {
-        return tree.getElement(this.index++);
+        return tree.getMember(this.index++);
     }
 }
