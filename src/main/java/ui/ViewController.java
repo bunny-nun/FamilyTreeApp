@@ -3,9 +3,8 @@ package ui;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import model.member.Member;
-import ui.view.TextInBox;
 import ui.view.commands.Command;
-import ui.view.treeLayoutBuilder.TreeLayoutBuilder;
+import ui.view.treeLayoutBuilder.TreeLayout;
 
 public class ViewController<M extends Member<M>> {
     @FXML
@@ -40,8 +39,7 @@ public class ViewController<M extends Member<M>> {
      * Shows the selected type of tree for selected member
      */
     public void show() {
-        TextInBox<M> memberTextInBox = new TextInBox<>(this.member);
-        TreeLayoutBuilder<M> tree = this.command.execute(this.member, memberTextInBox);
+        TreeLayout<M> tree = this.command.execute(this.member);
         this.root.setCenter(tree);
     }
 }

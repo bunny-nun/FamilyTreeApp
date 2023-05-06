@@ -5,9 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import model.member.Gender;
 import model.member.pet.Pet;
-import model.service.PersonService;
 import model.service.PetService;
 
 public class ConnectPetController {

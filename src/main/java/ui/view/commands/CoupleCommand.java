@@ -1,9 +1,7 @@
 package ui.view.commands;
 
 import model.member.Member;
-import ui.view.TextInBox;
-import ui.view.treeLayoutBuilder.CoupleTreeLayoutBuilder;
-import ui.view.treeLayoutBuilder.TreeLayoutBuilder;
+import ui.view.treeLayoutBuilder.CoupleTreeLayout;
 
 public class CoupleCommand<M extends Member<M>> extends Command<M> {
     public CoupleCommand() {
@@ -13,13 +11,12 @@ public class CoupleCommand<M extends Member<M>> extends Command<M> {
     /**
      * Builds the visual tree with selected member and their couple
      *
-     * @param member          selected member
-     * @param memberTextInBox box node crated for this selected member
+     * @param member selected member
      * @return the visual tree with selected member and their couple
      */
     @Override
-    public TreeLayoutBuilder<M> execute(M member, TextInBox<M> memberTextInBox) {
-        CoupleTreeLayoutBuilder<M> tree = new CoupleTreeLayoutBuilder<>(member, memberTextInBox);
+    public CoupleTreeLayout<M> execute(M member) {
+        CoupleTreeLayout<M> tree = new CoupleTreeLayout<>(member);
         tree.build();
         return tree;
     }

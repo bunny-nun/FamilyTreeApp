@@ -71,7 +71,7 @@ public class TreeBuilder<M extends Member<M>> {
                 siblings.addMember(child);
             }
         }
-        if(member.getFather() != null) {
+        if (member.getFather() != null) {
             for (M child : member.getFather().getChildren()) {
                 siblings.addMember(child);
             }
