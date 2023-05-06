@@ -68,6 +68,7 @@ public class PedigreeController {
         showTable();
         this.petTableView.setItems(this.list);
         this.commandList = new ArrayList<>();
+        this.commandList.add(new FamilyTreeCommand<>());
         this.commandList.add(new ParentsCommand<>());
         this.commandList.add(new ChildrenCommand<>());
         this.commandList.add(new SiblingsCommand<>());
