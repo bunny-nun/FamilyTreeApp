@@ -66,11 +66,15 @@ public class TreeBuilder<M extends Member<M>> {
      */
     public Tree<M> getSiblings(M member) {
         Tree<M> siblings = new Tree<>(member);
-        for (M child : member.getMother().getChildren()) {
-            siblings.addMember(child);
+        if (member.getMother() != null) {
+            for (M child : member.getMother().getChildren()) {
+                siblings.addMember(child);
+            }
         }
-        for (M child : member.getFather().getChildren()) {
-            siblings.addMember(child);
+        if(member.getFather() != null) {
+            for (M child : member.getFather().getChildren()) {
+                siblings.addMember(child);
+            }
         }
         siblings.setName(String.format("%s_%s_Siblings", member.getName(), member.getClass().getSimpleName()));
         return siblings;
