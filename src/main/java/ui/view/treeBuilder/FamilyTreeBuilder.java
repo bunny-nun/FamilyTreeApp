@@ -89,6 +89,10 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
             }
         }
 
+        System.out.println(maxSizes);
+        System.out.println(needParentAdjustment());
+
+
         double upperBoxWidth = maxSize * this.WIDTH + (maxSize - 1) * this.GAP;
         double maxWidth = upperRowSize / maxSize * upperBoxWidth + (upperRowSize / maxSize - 1) * this.GAP;
         return this.mainNode.getCenterX() - maxWidth / 2;
@@ -114,7 +118,6 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
     }
 
     private boolean needParentAdjustment() {
-
         boolean needAdjustment = false;
         ArrayList<Node<M>> upperLevel = this.parentsLevels.get(Collections.min(this.parentsLevels.keySet()) + 1);
         for (int i = 1; i < upperLevel.size() - 1; i++) {
@@ -130,6 +133,11 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
                     needAdjustment = true;
                 }
             }
+        }
+        if (upperLevel.size() == 2) {
+            if ((upperLevel.get(0).hasParents() && upperLevel.get(1).getParentsNodes().size() > 1) ||
+                    (upperLevel.get(1).hasParents() && upperLevel.get(0).getParentsNodes().size() > 1))
+                needAdjustment = true;
         }
         return needAdjustment;
     }
@@ -212,14 +220,23 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
                 }
             }
         }
+        if (bottomLevel.size() == 2) {
+            if ((bottomLevel.get(0).hasChildren() && bottomLevel.get(1).getChildrenNodes().size() > 1) ||
+                    (bottomLevel.get(1).hasChildren() && bottomLevel.get(0).getChildrenNodes().size() > 1))
+                needAdjustment = true;
+        }
         return needAdjustment;
     }
 
     private void addCouple(MainNode<M> node) {
         if (node.hasCouple()) {
-            double x = node.getCenterX() + this.WIDTH / 2 + this.GAP;
-            double y = node.getY();
-            node.getCoupleNode().setCoordinates(x, y);
+            double x;
+            if (node.getFather() != null) {
+                x = node.getFather().getX();
+            } else {
+                x = node.getX() + this.WIDTH + this.GAP;
+            }
+            node.getCoupleNode().setCoordinates(x, countY(node.getCoupleNode()));
             this.nodes.add(node.getCoupleNode());
         }
     }
