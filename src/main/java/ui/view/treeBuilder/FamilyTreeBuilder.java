@@ -88,11 +88,6 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
                 maxSize = maxSizes.get(maxSizes.size() - 1);
             }
         }
-
-        System.out.println(maxSizes);
-        System.out.println(needParentAdjustment());
-
-
         double upperBoxWidth = maxSize * this.WIDTH + (maxSize - 1) * this.GAP;
         double maxWidth = upperRowSize / maxSize * upperBoxWidth + (upperRowSize / maxSize - 1) * this.GAP;
         return this.mainNode.getCenterX() - maxWidth / 2;
@@ -191,7 +186,7 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
             for (int i = 0; i < node.getChildrenNodes().size(); i++) {
                 double childX = startX + cellWidth * i + (cellWidth - this.WIDTH) / 2;
                 Node<M> child = node.getChildrenNodes().get(i);
-                if (child.getLevel() == Collections.min(this.childrenLevels.keySet())) {
+                if (child.getLevel() == Collections.max(this.childrenLevels.keySet())) {
                     if (!needChildAdjustment()) {
                         cellWidth = (this.WIDTH + this.GAP) * node.getChildrenNodes().size() - this.GAP;
                         childX = node.getCenterX() - cellWidth / 2 + (this.WIDTH + this.GAP) * i;
