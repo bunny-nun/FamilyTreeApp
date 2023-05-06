@@ -11,6 +11,7 @@ import model.member.comparator.PersonComparatorByLastName;
 import model.member.person.Person;
 import model.member.pet.Pet;
 import model.tree.Tree;
+import model.tree.TreeBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -108,13 +109,22 @@ public abstract class Service<M extends Member<M>> {
      */
     public abstract M create(HashMap<String, String> map);
 
-
     /**
-     * Deletes the given member from this service's tree
+     * Deletes given person from this service's tree
      *
-     * @param element the member to be deleted from this service's tree
+     * @param element the person to be deleted from this service's tree
      */
-    public abstract boolean delete(M element);
+    public boolean delete(M element) {
+        if (this.tree.contains(element)) {
+            TreeBuilder<M> elementTree = new TreeBuilder<>();
+            for (M relative : elementTree.getRelatives(element)) {
+                System.out.println(cancelConnection(element, relative));
+            }
+            this.tree.removeMember(element);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Returns Tree with data from loaded file and assigns it as this service's tree

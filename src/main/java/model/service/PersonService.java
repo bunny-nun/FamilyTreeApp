@@ -44,18 +44,4 @@ public class PersonService extends Service<Person> {
             return null;
         }
     }
-
-    /**
-     * Deletes given person from this service's tree
-     *
-     * @param person the person to be deleted from this service's tree
-     */
-    @Override
-    public boolean delete(Person person) {
-        if (this.tree.contains(person)) {
-            this.tree.removeMember(person);
-            return true;
-        }
-        return false;
-    }
 }

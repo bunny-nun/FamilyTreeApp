@@ -46,18 +46,4 @@ public class PetService extends Service<Pet> {
             return null;
         }
     }
-
-    /**
-     * Deletes given pet from this service's tree
-     *
-     * @param pet the pet to be deleted from this service's tree
-     */
-    @Override
-    public boolean delete(Pet pet) {
-        if (this.tree.contains(pet)) {
-            this.tree.removeMember(pet);
-            return true;
-        }
-        return false;
-    }
 }
