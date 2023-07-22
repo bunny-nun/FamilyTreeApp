@@ -39,7 +39,7 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
         this.childrenLevels.get(this.mainNode.getLevel()).add(this.mainNode);
         this.addChildren(this.mainNode);
         if (this.mainNode.hasChildren()) {
-            layoutChild(this.mainNode, getBottomStartX());
+            layoutChild2(this.mainNode, getBottomStartX());
         }
         this.addCouple(this.mainNode);
         this.addConnections();
@@ -108,6 +108,16 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
                 }
                 parent.setCoordinates(parentX, countY(parent));
                 layoutParent(parent, startX + cellWidth * i);
+            }
+        }
+    }
+
+    private void layoutParent2(Node<M> node, double startX) {
+        for (int i = Collections.min(this.parentsLevels.keySet()); i < 0; i++) {
+            double rowX = this.mainNode.getCenterX() - (this.WIDTH * this.parentsLevels.get(i).size() + this.GAP * (this.parentsLevels.get(i).size() - 1)) / 2;
+            for (Node<M> parent : this.parentsLevels.get(i)) {
+                double x = rowX + (this.WIDTH + this.GAP) * this.parentsLevels.get(i).indexOf(parent);
+                parent.setCoordinates(x, countY(parent));
             }
         }
     }
@@ -198,6 +208,16 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
         }
     }
 
+    private void layoutChild2(Node<M> node, double startX) {
+        for (int i = Collections.max(this.childrenLevels.keySet()); i > 0; i--) {
+            double rowX = this.mainNode.getCenterX() - (this.WIDTH * this.childrenLevels.get(i).size() + this.GAP * (this.childrenLevels.get(i).size() - 1)) / 2;
+            for (Node<M> child : this.childrenLevels.get(i)) {
+                double x = rowX + (this.WIDTH + this.GAP) * this.childrenLevels.get(i).indexOf(child);
+                child.setCoordinates(x, countY(child));
+            }
+        }
+    }
+
     private boolean needChildAdjustment() {
         boolean needAdjustment = false;
         ArrayList<Node<M>> bottomLevel = this.childrenLevels.get(Collections.max(this.childrenLevels.keySet()) - 1);
@@ -226,11 +246,7 @@ public class FamilyTreeBuilder<M extends Member<M>> extends Group {
     private void addCouple(MainNode<M> node) {
         if (node.hasCouple()) {
             double x;
-            if (node.getFather() != null) {
-                x = node.getFather().getX();
-            } else {
-                x = node.getX() + this.WIDTH + this.GAP;
-            }
+            x = node.getX() + this.WIDTH + this.GAP;
             node.getCoupleNode().setCoordinates(x, countY(node.getCoupleNode()));
             this.nodes.add(node.getCoupleNode());
         }
