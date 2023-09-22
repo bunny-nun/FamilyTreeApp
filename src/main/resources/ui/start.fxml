@@ -14,7 +14,7 @@
             <children>
                 <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true">
                     <image>
-                        <Image url="D:\УЧЕБА\FamilyTreeApp\src\main\resources\ui\tree.png"/>
+                        <Image url="D:\PROJECTS\FamilyTreeApp\src\main\resources\ui\tree.png"/>
                     </image>
                 </ImageView>
                 <AnchorPane>

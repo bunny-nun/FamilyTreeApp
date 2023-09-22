@@ -104,7 +104,7 @@ public class FamilyTreeController {
             alert.setHeaderText(null);
             alert.setContentText("Save before close?");
 
-            Image image = new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png");
+            Image image = new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png");
             ImageView icon = new ImageView(image);
             icon.setFitHeight(48);
             icon.setFitWidth(48);
@@ -143,7 +143,7 @@ public class FamilyTreeController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setTitle("Family Tree App");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
@@ -165,7 +165,7 @@ public class FamilyTreeController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setTitle("Family Tree App - Create new");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.showAndWait();
@@ -194,7 +194,7 @@ public class FamilyTreeController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Family Tree App - Edit");
-            stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+            stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
             controller.showPersonData();
@@ -227,7 +227,7 @@ public class FamilyTreeController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Family Tree App - Connect");
-            stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+            stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
@@ -255,7 +255,7 @@ public class FamilyTreeController {
     @FXML
     private void open() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Open file");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("FamilyTree file (*.fam)", "*.fam"));
         File file = fileChooser.showOpenDialog(new Stage());
@@ -283,7 +283,7 @@ public class FamilyTreeController {
     @FXML
     private void saveTxt() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Save as");
         fileChooser.setInitialFileName("new_family_tree");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text document (*.txt)", "*.txt"));
@@ -304,7 +304,7 @@ public class FamilyTreeController {
     @FXML
     private void saveOut() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Save as");
         fileChooser.setInitialFileName("new_family_tree");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("FamilyTree file (*.fam)", "*.fam"));
@@ -392,7 +392,7 @@ public class FamilyTreeController {
         viewController.setCommand(this.command);
         Stage stage = new Stage();
         stage.setTitle("Family Tree App - Family Tree");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         stage.setScene(new Scene(root));
         stage.show();
         viewController.show();

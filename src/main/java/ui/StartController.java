@@ -48,7 +48,7 @@ public class StartController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Family Tree App");
-            stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+            stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
             stage.setScene(new Scene(root));
             PedigreeController pedigreeController = loader.getController();
             pedigreeController.setStage(stage);
@@ -66,7 +66,7 @@ public class StartController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Family Tree App");
-            stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+            stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
             stage.setScene(new Scene(root));
             FamilyTreeController familyTreeController = loader.getController();
             familyTreeController.setStage(stage);
@@ -81,7 +81,7 @@ public class StartController {
     @FXML
     private void openClick() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Open file");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Any tree", "*.fam", "*.ped"),
                 new FileChooser.ExtensionFilter("FamilyTree file (*.fam)", "*.fam"),
@@ -111,7 +111,7 @@ public class StartController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setTitle("Family Tree App");
-                stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+                stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
                 stage.setScene(new Scene(root));
                 PedigreeController pedigreeController = loader.getController();
                 pedigreeController.setFile(this.file);
@@ -129,7 +129,7 @@ public class StartController {
                 Parent root = loader.getRoot();
                 Stage stage = new Stage();
                 stage.setTitle("Family Tree App");
-                stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+                stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
                 stage.setScene(new Scene(root));
                 FamilyTreeController familyTreeController = loader.getController();
                 familyTreeController.setFile(this.file);

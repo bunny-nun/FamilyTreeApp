@@ -99,7 +99,7 @@ public class PedigreeController {
             alert.setHeaderText(null);
             alert.setContentText("Save before close?");
 
-            Image image = new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png");
+            Image image = new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png");
             ImageView icon = new ImageView(image);
             icon.setFitHeight(48);
             icon.setFitWidth(48);
@@ -138,7 +138,7 @@ public class PedigreeController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setTitle("Family Tree App");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.show();
@@ -160,7 +160,7 @@ public class PedigreeController {
         Parent root = loader.getRoot();
         Stage stage = new Stage();
         stage.setTitle("Family Tree App - Create new");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         stage.setResizable(false);
         stage.setScene(new Scene(root));
         stage.showAndWait();
@@ -189,7 +189,7 @@ public class PedigreeController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Family Tree App - Edit");
-            stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+            stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
             controller.showPetData();
@@ -222,7 +222,7 @@ public class PedigreeController {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setTitle("Family Tree App - Connect");
-            stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+            stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
             stage.setResizable(false);
             stage.setScene(new Scene(root));
             stage.show();
@@ -251,7 +251,7 @@ public class PedigreeController {
     @FXML
     private void open() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Open file");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Pedigree file (*.ped)", "*.ped"));
         File file = fileChooser.showOpenDialog(new Stage());
@@ -279,7 +279,7 @@ public class PedigreeController {
     @FXML
     private void saveTxt() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Save as");
         fileChooser.setInitialFileName("new_pedigree");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text document (*.txt)", "*.txt"));
@@ -300,7 +300,7 @@ public class PedigreeController {
     @FXML
     private void saveOut() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setInitialDirectory(new File("D:\\УЧЕБА\\FamilyTreeApp"));
+        fileChooser.setInitialDirectory(new File("D:\\PROJECTS\\FamilyTreeApp"));
         fileChooser.setTitle("Save as");
         fileChooser.setInitialFileName("new_pedigree");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Pedigree file (*.ped)", "*.ped"));
@@ -387,7 +387,7 @@ public class PedigreeController {
         viewController.setCommand(this.command);
         Stage stage = new Stage();
         stage.setTitle("Family Tree App - Family Tree");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         stage.setScene(new Scene(root));
         stage.show();
         viewController.show();

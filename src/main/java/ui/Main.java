@@ -16,7 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Family Tree App");
-        stage.getIcons().add(new Image("D:\\УЧЕБА\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
+        stage.getIcons().add(new Image("D:\\PROJECTS\\FamilyTreeApp\\src\\main\\resources\\ui\\tree.png"));
         showMainMenu(stage);
     }
 
